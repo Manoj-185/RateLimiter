@@ -7,14 +7,12 @@ class Rack::Attack
     # if req.path == '/api/v1/users' && req.post? 
     #   req.params['email'].presence
     #  end 
-    
-   #Apply all users routes url rate limit
+    #implement rate limiter for get users api
     if req.path == '/api/v1/users' 
       req.ip
     end
     #req.ip // apply full site rate limit
   end
-
 
   self.throttled_response = ->(env) {
     retry_after = (env['rack.attack.match_data'] || {})[:period]
