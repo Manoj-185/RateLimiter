@@ -1,3 +1,4 @@
+require 'redis'
 class CustomRateLimit
   LIMIT = 20 
 
